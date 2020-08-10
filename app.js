@@ -8,10 +8,12 @@ const port = process.env.PORT || 3000;
 const axios = require('axios');
 const express = require('express');
 const app = express();
+const helmet = require('helmet');
 let url;
 
 app.use(express.json());
 app.use(express.static('public'));
+app.use(helmet());
 
 app.post('/init', (req, res) => {
   const { longitude, latitude } = req.body.location;
